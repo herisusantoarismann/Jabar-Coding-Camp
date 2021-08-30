@@ -1,0 +1,4 @@
+Saya sudah 4 tahun di bidang programming, dimulai ketika saya masuk kuliah.
+Saat ini saya sedang mengembangkan kemampuan saya dibidang Web Developer, tepatnya di bagian FrontEnd.
+Di bidang ini saya sudah belajar mengenai React JS dan Vue JS.
+Sampai saat ini saya sudah memiliki pengalaman magan dan terlibat pada 1 proyek pengembangan Web.
