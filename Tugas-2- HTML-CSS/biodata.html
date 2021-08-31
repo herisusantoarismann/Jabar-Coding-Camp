@@ -16,7 +16,7 @@
         }
         section{
             min-height: 100vh;
-            min-width: 100vw;
+            max-width: 100vw;
             display: flex;
             color: #fff;
         }
@@ -27,6 +27,10 @@
             justify-content: space-evenly;
             padding: 100px;
             flex-direction: column;
+        }
+        section .navBar .wrapper{
+            position: fixed;
+            transform: translateY(-150px);
         }
         section .navBar .wrapper .logo{
             margin-bottom: 50px;
@@ -107,7 +111,7 @@
             transform: scale(1.5);
         }
         section .content .about{
-            display: flex;
+            display: none;
             justify-content: center;
             align-items: center;
             flex-direction: column;
@@ -163,11 +167,71 @@
             justify-content: space-between;
             align-items: flex-start;
             font-style: italic;
+        }
+        section .content .about .textBox .rightBox .rightBox-item p{
             color: #bbb;
+        }
+        section .content .portofolio{
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            width: 60%;
+            margin: 150px 0;
+        }
+        section .content .portofolio .title{
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 30px;
+        }
+        section .content .portofolio .title nav ul{
+            display: flex
+        }
+        section .content .portofolio .title nav ul li{
+            list-style: none;
+            margin-right: 20px;
+            cursor: pointer;
+            transition: 0.5s;
+        }
+        section .content .portofolio .title nav ul li:hover{
+            letter-spacing: 2px;
+        }
+        section .content .portofolio .portofolioBox{
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 50px;
+            cursor: pointer;
+        }
+        section .content .portofolio .portofolioBox .portofolio-item{
+            overflow: hidden;
+        }
+        section .content .portofolio .portofolioBox .portofolio-item img{
+            width: 100%;
+            height: 100%;
+            transition: 0.5s;  
+        }
+        section .content .portofolio .portofolioBox .portofolio-item:hover img{
+            transform: scale(1.1);
+        }
+        section .content .portofolio .portofolioBox .portofolio-item p{
+            position: absolute;
+            transform: translateY(-20px);
+            opacity: 0;
+            padding-left: 20px;
+            z-index: 10;
+            color: #fff;
+            transition: 0.5s;
+        }
+        section .content .portofolio .portofolioBox .portofolio-item:hover p{
+            transform: translateY(0);
+            opacity: 100;
         }
         @media only screen and (max-width: 1024px) {
             section .navBar{
                 padding: 50px;
+            }
+            section .navBar .wrapper{
+                transform: translateY(0);
             }
             section .navBar .logo h1{
                 font-size: 1rem;
@@ -191,6 +255,28 @@
             section .content .home .textBox .social i{
                 font-size: 0.8rem;
             }
+            section .content .about{
+                width: 80%;
+            }
+            section .content .about .imgBox{
+                margin-bottom: 20px;
+            }
+            section .content .about .textBox .leftBox h1{
+                font-size: 1rem;
+            }
+            section .content .about .textBox .leftBox p{
+                font-size: 0.8rem;
+            }
+            section .content .about .textBox .leftBox button{
+                padding: 5px 10px;
+            }
+            section .content .about .textBox .rightBox .rightBox-item{
+                font-size: 0.7rem;
+            }
+            section .content .portofolio{
+                margin: 100px 0;
+                width: 60%;
+            }
         }
         @media only screen and (max-width: 768px) {
             section{
@@ -202,8 +288,10 @@
                 background-color: #fff;
             }
             section .navBar .wrapper{
+                position: relative;
                 display: flex;
                 justify-content: space-between;
+                padding: 20px;
             }
             section .navBar .wrapper .logo{
                 margin-bottom: 0px;
@@ -231,10 +319,28 @@
                 flex-direction: column;
                 text-align: center;
             }
+            section .content .about{
+                width: 95%;
+                margin-top: 20px;
+            }
+            section .content .about .imgBox{
+                height: 50%;
+                margin-bottom: 0px;
+            }
+            section .content .about .textBox{
+                flex-direction: column;
+            }
+            section .content .about .textBox .rightBox{
+                padding-left: 0px;
+                width: 50%;
+            }
         }
         @media only screen and (max-width: 425px) {
             section .navBar{
                 padding: 0 10px;
+            }
+            section .navBar .wrapper{
+                padding: 10px;
             }
             section .content{
                 flex:9;
@@ -247,10 +353,26 @@
             section .content .home .textBox{
                 height: 120px;
             }
+            section .content .about .textBox .leftBox button{
+                font-size: 0.7rem;
+                padding: 3px 7px;
+            }
+            section .content .portofolio{
+                width: 80%;
+            }
+            section .content .portofolio .title{
+                flex-direction: column;
+            }
+            section .content .portofolio .portofolioBox{
+                gap: 15px;
+            }
         }
         @media only screen and (max-width: 375px) {
             section .content{
                 flex:10;
+            }
+            section .content .about .textBox .rightBox{
+                width: 60%;
             }
         }
         @media only screen and (max-width: 320px) {
@@ -266,6 +388,10 @@
             }
             section .content .home .textBox .social i{
                 font-size: 0.6rem;
+            }
+            section .content .about .textBox .rightBox{
+                padding-left: 0px;
+                width: 100%;
             }
         }
     </style>
@@ -340,6 +466,32 @@
 
                             </p>
                         </div>
+                    </div>
+                </div>
+            </div>
+            <div class="portofolio">
+                <div class="title">
+                    <h1>Portofolio</h1>
+                    <nav>
+                        <ul>
+                            <li>All</li>
+                            <li>Web</li>
+                            <li>Android</li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="portofolioBox">
+                    <div class="portofolio-item">
+                        <img src="https://images.unsplash.com/photo-1547658719-da2b51169166?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=700&q=80" alt="">
+                        <p>Portofolio 1</p>
+                    </div>
+                    <div class="portofolio-item">
+                        <img src="https://images.unsplash.com/photo-1558655146-d09347e92766?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=700&q=80" alt="">
+                        <p>Portofolio 1</p>
+                    </div>
+                    <div class="portofolio-item">
+                        <img src="https://images.unsplash.com/photo-1618477247222-acbdb0e159b3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=700&q=80" alt="">
+                        <p>Portofolio 1</p>
                     </div>
                 </div>
             </div>
