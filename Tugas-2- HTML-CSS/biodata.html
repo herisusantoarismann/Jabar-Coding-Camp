@@ -64,9 +64,13 @@
             background-color: #111;
             display: flex;
             justify-content: center;
+        }
+        section .content .home{
+            display: none;
+            justify-content: center;
             align-items: center;
         }
-        section .content .imgBox{
+        section .content .home .imgBox{
             width: 300px;
             height: 300px;
             border-radius: 100%;
@@ -77,29 +81,89 @@
             background-position: center;
             margin-right: 50px;
         }
-        section .content .textBox{
+        section .content .home .textBox{
             height: 200px;
             display: flex;
             flex-direction: column;
             justify-content: space-evenly;
         }
-        section .content .textBox h1{
+        section .content .home .textBox h1{
             font-size: 3rem;
             font-weight: 900;
             text-transform: uppercase;
             letter-spacing: 2px;
         }
-        section .content .textBox p i{
+        section .content .home .textBox p{
             font-size: 1rem;
+            font-style: italic;
             color:#bbb;
         }
-        section .content .textBox .social i{
+        section .content .home .textBox .social i{
             margin-right: 16px;
             transition: 0.5s;
             cursor: pointer;
         }
-        section .content .textBox .social i:hover{
+        section .content .home .textBox .social i:hover{
             transform: scale(1.5);
+        }
+        section .content .about{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            width: 60%;
+        }
+        section .content .about .imgBox{
+            width: 100%;
+            height: 40%;
+            background: url("assets/img/personal.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            margin-bottom: 50px;
+        }
+        section .content .about .textBox{
+            display: flex;
+            height: 250px;
+        }
+        section .content .about .textBox .leftBox{
+            flex: 2;
+            display: flex;
+            justify-content: space-evenly;
+            flex-direction: column;
+        }
+        section .content .about .textBox .leftBox h1{
+            font-size: 2rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        section .content .about .textBox .leftBox p{
+            font-size: 0.9rem;
+            color:#bbb;
+            font-style: italic;
+        }
+        section .content .about .textBox .leftBox button{
+            padding: 10px 15px;
+            cursor: pointer;
+            transition: 0.5s;
+        }
+        section .content .about .textBox .leftBox button:hover{
+            letter-spacing: 2px;
+        }
+        section .content .about .textBox .rightBox{
+            flex: 1;
+            padding-left:20px;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+        }
+        section .content .about .textBox .rightBox .rightBox-item{
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            font-style: italic;
+            color: #bbb;
         }
         @media only screen and (max-width: 1024px) {
             section .navBar{
@@ -118,13 +182,13 @@
                 width: 200px;
                 height: 200px;
             }
-            section .content .textBox h1{
+            section .content .home .textBox h1{
                 font-size: 1.5rem;
             }
-            section .content .textBox p i{
+            section .content .home .textBox p{
                 font-size: 0.8rem;
             }
-            section .content .textBox .social i{
+            section .content .home .textBox .social i{
                 font-size: 0.8rem;
             }
         }
@@ -162,6 +226,8 @@
             }
             section .content{
                 flex:9;
+            }
+            section .content .home{
                 flex-direction: column;
                 text-align: center;
             }
@@ -173,12 +239,12 @@
             section .content{
                 flex:9;
             }
-            section .content .imgBox{
+            section .content .home .imgBox{
                 width: 150px;
                 height: 150px;
                 margin-right: 10px;
             }
-            section .content .textBox{
+            section .content .home .textBox{
                 height: 120px;
             }
         }
@@ -191,14 +257,14 @@
             section .navBar{
                 padding: 0 10px;
             }
-            section .content .textBox h1{
+            section .content .home .textBox h1{
                 font-size: 0.9rem;
                 margin-top: 10px;
             }
-            section .content .textBox p i{
+            section .content .home .textBox p i{
                 font-size: 0.6rem;
             }
-            section .content .textBox .social i{
+            section .content .home .textBox .social i{
                 font-size: 0.6rem;
             }
         }
@@ -229,16 +295,52 @@
             </div>
         </div>
         <div class="content">
-            <div class="imgBox">
+            <div class="home">
+                <div class="imgBox">
+                </div>
+                <div class="textBox">
+                    <h1>Heri Susanto Arisman</h1>
+                    <p>Front end developer who likes to solve strange problems <br> with brilliant solutions</p>
+                    <div class="social">
+                        <i class="fab fa-facebook-f"></i>
+                        <i class="fab fa-twitter"></i>
+                        <i class="fab fa-instagram"></i>
+                        <i class="fab fa-github"></i>
+                    </div>
+                </div>
             </div>
-            <div class="textBox">
-                <h1>Heri Susanto Arisman</h1>
-                <p><i>Front end developer who likes to solve strange problems <br> with brilliant solutions</i></p>
-                <div class="social">
-                    <i class="fab fa-facebook-f"></i>
-                    <i class="fab fa-twitter"></i>
-                    <i class="fab fa-instagram"></i>
-                    <i class="fab fa-github"></i>
+            <div class="about">
+                <div class="imgBox"></div>
+                <div class="textBox">
+                    <div class="leftBox">
+                        <h1>Heri Susanto Arisman</h1>
+                        <p>Hello, I'm a Front End Developer living in Pangandaran who likes to solve strange problems with the best solutions. I use React and Vue to make the gadget screen beautiful<p>
+                        <button>Read More</button>
+                    </div>
+                    <div class="rightBox">
+                        <div class="rightBox-item">
+                            <span>Brithday:</span>
+                            <p>12.01.1999</p>
+                        </div>
+                        <div class="rightBox-item">
+                            <span>Age:</span>
+                            <p>22</p>
+                        </div>
+                        <div class="rightBox-item">
+                            <span>Address:</span>
+                            <p>Pangandaran</p>
+                        </div>
+                        <div class="rightBox-item">
+                            <span>Email:</span>
+                            <p>heri.s.arisman@gmail.com</p>
+                        </div>
+                        <div class="rightBox-item">
+                            <span>Study:</span>
+                            <p>Ahmad Dahlan University
+
+                            </p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
