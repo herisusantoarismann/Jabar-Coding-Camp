@@ -5,8 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Personal Website</title>
+
+    <!-- Font Awesome CDN -->
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+
     <style>
+        /* Import Font Popins */
         @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
         *{
             box-sizing: border-box;
@@ -268,6 +272,8 @@
             transform: translateY(0);
             opacity: 100;
         }
+
+        /* For responsive 1024px resolution */
         @media only screen and (max-width: 1024px) {
             section .navBar{
                 padding: 50px;
@@ -317,6 +323,8 @@
                 width: 60%;
             }
         }
+
+        /* For responsive 768px resolution */
         @media only screen and (max-width: 768px) {
             section{
                 flex-direction: column;
@@ -374,6 +382,8 @@
                 width: 50%;
             }
         }
+
+        /* For responsive 425px resolution */
         @media only screen and (max-width: 425px) {
             section .navBar{
                 padding: 0 10px;
@@ -403,6 +413,8 @@
                 gap: 15px;
             }
         }
+
+        /* For responsive 375px resolution */
         @media only screen and (max-width: 375px) {
             section .content{
                 flex:10;
@@ -411,6 +423,8 @@
                 width: 60%;
             }
         }
+
+        /* For responsive 320px resolution */
         @media only screen and (max-width: 320px) {
             section .navBar{
                 padding: 0 10px;
@@ -457,6 +471,7 @@
             </div>
         </div>
         <div class="content">
+            <!-- Content Home -->
             <div class="home active" id="home">
                 <div class="imgBox">
                 </div>
@@ -471,6 +486,8 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Content About -->
             <div class="about" id="about">
                 <div class="imgBox"></div>
                 <div class="textBox">
@@ -505,6 +522,8 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Content Portofolio -->
             <div class="portofolio" id="portofolio">
                 <div class="title">
                     <h1>Portofolio</h1>
@@ -534,21 +553,27 @@
         </div>
     </section>
     <script>
+        // Functions that make content dynamic
         function changeContent(e, element){
+            // Get element
             const content = document.getElementById(element);
             const wrapper = document.querySelector('.content');
+            // Check if portofolio (because portfolio requires overflow-y )
             if(element === "portofolio"){
                 wrapper.classList.add("active")
             }
             else{
                 wrapper.classList.remove("active");
             }
+            // Remove class from sibling (in JQuery is sibling()) for navigation
             for (let sibling of e.parentNode.children) {
                 if (sibling !== e) sibling.classList.remove('active');
             }
+            // Remove class from sibling (in JQuery is sibling()) for content
             for (let sibling of content.parentNode.children) {
                 if (sibling !== content) sibling.classList.remove('active');
             }
+            // Adding a class to each element 
             e.classList.add("active");
             content.classList.add("active");
         }
