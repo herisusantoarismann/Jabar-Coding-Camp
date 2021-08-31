@@ -13,12 +13,14 @@
             margin: 0;
             padding: 0;
             font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
         }
         section{
             min-height: 100vh;
             max-width: 100vw;
             display: flex;
             color: #fff;
+            overflow-x: hidden;
         }
         section .navBar{
             flex: 1;
@@ -69,11 +71,25 @@
             background-color: #111;
             display: flex;
             justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        section .content.active{
+            overflow-y: auto;
         }
         section .content .home{
-            display: none;
+            position: absolute;
+            top: 50%;
+            transform: translate(1000px, -50%);
+            display: flex;
             justify-content: center;
             align-items: center;
+            opacity: 0;
+            transition: 1s ease-out;
+        }
+        section .content .home.active{
+            opacity: 100;
+            transform: translate(0, -50%);
         }
         section .content .home .imgBox{
             width: 300px;
@@ -112,11 +128,20 @@
             transform: scale(1.5);
         }
         section .content .about{
-            display: none;
+            position: relative;
+            top: 50%;
+            transform: translate(1000px, -50%);
+            display: flex;
             justify-content: center;
             align-items: center;
             flex-direction: column;
             width: 60%;
+            opacity: 0;
+            transition: 1s ease-out;
+        }
+        section .content .about.active{
+            opacity: 100;
+            transform: translate(0, -50%);
         }
         section .content .about .imgBox{
             width: 100%;
@@ -173,11 +198,22 @@
             color: #bbb;
         }
         section .content .portofolio{
+            position: absolute;
+            top: 50%;
+            transform: translate(1000px, -50%);
             display: flex;
             align-items: center;
             flex-direction: column;
             width: 60%;
             margin: 150px 0;
+            visibility: hidden;
+            opacity: 0;
+            transition: 1s ease-in-out;
+        }
+        section .content .portofolio.active{
+            visibility: visible;
+            opacity: 100;
+            transform: translate(0, -50%);
         }
         section .content .portofolio .title{
             width: 100%;
@@ -236,9 +272,6 @@
             section .navBar{
                 padding: 50px;
             }
-            section .navBar .wrapper{
-                transform: translateY(0);
-            }
             section .navBar .logo h1{
                 font-size: 1rem;
             }
@@ -280,7 +313,7 @@
                 font-size: 0.7rem;
             }
             section .content .portofolio{
-                margin: 100px 0;
+                margin: 20px 0 ;
                 width: 60%;
             }
         }
@@ -297,7 +330,7 @@
                 position: relative;
                 display: flex;
                 justify-content: space-between;
-                padding: 20px;
+                margin-top: 20px;
             }
             section .navBar .wrapper .logo{
                 margin-bottom: 0px;
@@ -327,7 +360,7 @@
             }
             section .content .about{
                 width: 95%;
-                margin-top: 20px;
+                margin-top: 250px;
             }
             section .content .about .imgBox{
                 height: 50%;
@@ -344,9 +377,6 @@
         @media only screen and (max-width: 425px) {
             section .navBar{
                 padding: 0 10px;
-            }
-            section .navBar .wrapper{
-                padding: 10px;
             }
             section .content{
                 flex:9;
@@ -411,15 +441,15 @@
                 </div>
                 <nav>
                     <ul>
-                        <li class="active">Home</li>
-                        <li>About</li>
-                        <li>Portofolio</li>
+                        <li class="active" onclick="changeContent(this, 'home')">Home</li>
+                        <li onclick="changeContent(this, 'about')">About</li>
+                        <li onclick="changeContent(this, 'portofolio')">Portofolio</li>
                     </ul>
                 </nav>
                 <nav class="menuToggle">
-                    <i class="fas fa-home"></i>
-                    <i class="fas fa-user"></i>
-                    <i class="fas fa-briefcase"></i>
+                    <i class="fas fa-home" onclick="changeContent(this, 'home')"></i>
+                    <i class="fas fa-user" onclick="changeContent(this, 'about')"></i>
+                    <i class="fas fa-briefcase" onclick="changeContent(this, 'portofolio')"></i>
                 </nav>
                 <div class="copyright">
                     <i>&copy; 2021 <br> All Right Reserved</i>
@@ -427,7 +457,7 @@
             </div>
         </div>
         <div class="content">
-            <div class="home">
+            <div class="home active" id="home">
                 <div class="imgBox">
                 </div>
                 <div class="textBox">
@@ -441,7 +471,7 @@
                     </div>
                 </div>
             </div>
-            <div class="about">
+            <div class="about" id="about">
                 <div class="imgBox"></div>
                 <div class="textBox">
                     <div class="leftBox">
@@ -475,7 +505,7 @@
                     </div>
                 </div>
             </div>
-            <div class="portofolio">
+            <div class="portofolio" id="portofolio">
                 <div class="title">
                     <h1>Portofolio</h1>
                     <nav>
@@ -493,15 +523,35 @@
                     </div>
                     <div class="portofolio-item">
                         <img src="https://images.unsplash.com/photo-1558655146-d09347e92766?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=700&q=80" alt="">
-                        <p>Portofolio 1</p>
+                        <p>Portofolio 2</p>
                     </div>
                     <div class="portofolio-item">
                         <img src="https://images.unsplash.com/photo-1618477247222-acbdb0e159b3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=700&q=80" alt="">
-                        <p>Portofolio 1</p>
+                        <p>Portofolio 3</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+    <script>
+        function changeContent(e, element){
+            const content = document.getElementById(element);
+            const wrapper = document.querySelector('.content');
+            if(element === "portofolio"){
+                wrapper.classList.add("active")
+            }
+            else{
+                wrapper.classList.remove("active");
+            }
+            for (let sibling of e.parentNode.children) {
+                if (sibling !== e) sibling.classList.remove('active');
+            }
+            for (let sibling of content.parentNode.children) {
+                if (sibling !== content) sibling.classList.remove('active');
+            }
+            e.classList.add("active");
+            content.classList.add("active");
+        }
+    </script>
 </body>
 </html>
