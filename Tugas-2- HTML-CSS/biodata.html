@@ -71,7 +71,7 @@
             justify-content: center;
         }
         section .content .home{
-            display: flex;
+            display: none;
             justify-content: center;
             align-items: center;
         }
@@ -173,7 +173,7 @@
             color: #bbb;
         }
         section .content .portofolio{
-            display: none;
+            display: flex;
             align-items: center;
             flex-direction: column;
             width: 60%;
@@ -193,9 +193,14 @@
             margin-right: 20px;
             cursor: pointer;
             transition: 0.5s;
+            color: #bbb;
+        }
+        section .content .portofolio .title nav ul li.active{
+            color: #fff;
         }
         section .content .portofolio .title nav ul li:hover{
             letter-spacing: 2px;
+            color: #fff;
         }
         section .content .portofolio .portofolioBox{
             display: grid;
@@ -475,7 +480,7 @@
                     <h1>Portofolio</h1>
                     <nav>
                         <ul>
-                            <li>All</li>
+                            <li class="active">All</li>
                             <li>Web</li>
                             <li>Android</li>
                         </ul>
