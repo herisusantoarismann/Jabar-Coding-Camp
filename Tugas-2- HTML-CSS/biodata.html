@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Website</title>
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+        *{
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+        }
+        section{
+            min-height: 100vh;
+            min-width: 100vw;
+            display: flex;
+            color: #fff;
+        }
+        section .navBar{
+            flex: 1;
+            background-color: #000;
+            display: flex;
+            justify-content: space-evenly;
+            padding: 100px;
+            flex-direction: column;
+        }
+        section .navBar .wrapper .logo{
+            margin-bottom: 50px;
+            text-transform: uppercase;
+            font-weight: 900;
+            letter-spacing: 2px;
+            cursor: pointer;
+        }
+        section .navBar nav ul li{
+            list-style: none;
+            padding: 7px 0;
+            font-size: 1rem;
+            font-weight: 300;
+            letter-spacing: 2px;
+            cursor: pointer;
+            color:#bbb;
+            transition: 0.5s;
+        }
+        section .navBar nav ul li.active{
+            color:#fff;
+        }
+        section .navBar nav ul li:hover{
+            letter-spacing: 3px;
+            color: #fff;
+        }
+        section .navBar .wrapper .copyright{
+            margin-top: 50px;
+            color:#bbb;
+        }
+        section .content{
+            flex: 6;
+            background-color: #111;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        section .content .imgBox{
+            width: 300px;
+            height: 300px;
+            border-radius: 100%;
+            border:7px solid #bbb;
+            background: url("assets/img/personal.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            margin-right: 50px;
+        }
+        section .content .textBox{
+            height: 200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+        }
+        section .content .textBox h1{
+            font-size: 3rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        section .content .textBox p i{
+            font-size: 1rem;
+            color:#bbb;
+        }
+        section .content .textBox .social i{
+            margin-right: 16px;
+            transition: 0.5s;
+            cursor: pointer;
+        }
+        section .content .textBox .social i:hover{
+            transform: scale(1.5);
+        }
+    </style>
+</head>
+<body>
+    <section>
+        <div class="navBar">
+            <div class="wrapper">
+                <div class="logo">
+                    <h1>JCC - Heri</h1>
+                </div>
+                <nav>
+                    <ul>
+                        <li class="active">Home</li>
+                        <li>About</li>
+                        <li>Contact</li>
+                    </ul>
+                </nav>
+                <div class="copyright">
+                    <i>&copy; 2021 <br> All Right Reserved</i>
+                </div>
+            </div>
+        </div>
+        <div class="content">
+            <div class="imgBox">
+            </div>
+            <div class="textBox">
+                <h1>Heri Susanto Arisman</h1>
+                <p><i>Front end developer who likes to solve strange problems <br> with brilliant solutions</i></p>
+                <div class="social">
+                    <i class="fab fa-facebook-f"></i>
+                    <i class="fab fa-twitter"></i>
+                    <i class="fab fa-instagram"></i>
+                    <i class="fab fa-github"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
