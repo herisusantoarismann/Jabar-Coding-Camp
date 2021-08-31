@@ -52,6 +52,9 @@
             letter-spacing: 3px;
             color: #fff;
         }
+        section .navBar .menuToggle{
+            display: none;
+        }
         section .navBar .wrapper .copyright{
             margin-top: 50px;
             color:#bbb;
@@ -98,6 +101,107 @@
         section .content .textBox .social i:hover{
             transform: scale(1.5);
         }
+        @media only screen and (max-width: 1024px) {
+            section .navBar{
+                padding: 50px;
+            }
+            section .navBar .logo h1{
+                font-size: 1rem;
+            }
+            section .navBar nav ul li{
+                font-size: 0.7rem;
+            }
+            section .navBar .copyright i{
+                font-size: 0.7rem;
+            }
+            section .content .imgBox{
+                width: 200px;
+                height: 200px;
+            }
+            section .content .textBox h1{
+                font-size: 1.5rem;
+            }
+            section .content .textBox p i{
+                font-size: 0.8rem;
+            }
+            section .content .textBox .social i{
+                font-size: 0.8rem;
+            }
+        }
+        @media only screen and (max-width: 768px) {
+            section{
+                flex-direction: column;
+            }
+            section .navBar{
+                padding: 0 20px;
+                color: #000;
+                background-color: #fff;
+            }
+            section .navBar .wrapper{
+                display: flex;
+                justify-content: space-between;
+            }
+            section .navBar .wrapper .logo{
+                margin-bottom: 0px;
+            }
+            section .navBar .wrapper .logo h1{
+                font-weight: 900;
+            }
+            section .navBar .wrapper nav ul li{
+                display: none;
+            }
+            section .navBar .wrapper .menuToggle{
+                display: flex;
+            }
+            section .navBar .wrapper .menuToggle i{
+                margin-right: 20px;
+                cursor: pointer;
+            }
+            section .navBar .wrapper .copyright{
+                display: none;
+            }
+            section .content{
+                flex:9;
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+        @media only screen and (max-width: 425px) {
+            section .navBar{
+                padding: 0 10px;
+            }
+            section .content{
+                flex:9;
+            }
+            section .content .imgBox{
+                width: 150px;
+                height: 150px;
+                margin-right: 10px;
+            }
+            section .content .textBox{
+                height: 120px;
+            }
+        }
+        @media only screen and (max-width: 375px) {
+            section .content{
+                flex:10;
+            }
+        }
+        @media only screen and (max-width: 320px) {
+            section .navBar{
+                padding: 0 10px;
+            }
+            section .content .textBox h1{
+                font-size: 0.9rem;
+                margin-top: 10px;
+            }
+            section .content .textBox p i{
+                font-size: 0.6rem;
+            }
+            section .content .textBox .social i{
+                font-size: 0.6rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -111,8 +215,13 @@
                     <ul>
                         <li class="active">Home</li>
                         <li>About</li>
-                        <li>Contact</li>
+                        <li>Portofolio</li>
                     </ul>
+                </nav>
+                <nav class="menuToggle">
+                    <i class="fas fa-home"></i>
+                    <i class="fas fa-user"></i>
+                    <i class="fas fa-briefcase"></i>
                 </nav>
                 <div class="copyright">
                     <i>&copy; 2021 <br> All Right Reserved</i>
