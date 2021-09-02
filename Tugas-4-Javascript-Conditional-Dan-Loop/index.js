@@ -68,3 +68,13 @@ switch (bulan) {
     console.log("Mohon masukkan bulan dengan benar");
     break;
 }
+
+// Soal Nomor 3
+var n = 3;
+var pagar = "#";
+
+// Jawbaan Nomor 3
+while (pagar.length <= n) {
+  console.log(pagar);
+  pagar += "#";
+}
