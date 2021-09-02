@@ -70,11 +70,36 @@ switch (bulan) {
 }
 
 // Soal Nomor 3
-var n = 3;
+var n = 6;
 var pagar = "#";
 
 // Jawbaan Nomor 3
 while (pagar.length <= n) {
   console.log(pagar);
   pagar += "#";
+}
+
+// Soal Nomor 4
+var m = 5;
+
+// Jawaban Nomor 4
+var i = 1;
+var SamaDengan = "=";
+while (i <= m) {
+  switch (SamaDengan.length % 3) {
+    case 0:
+      console.log(i + " - I love VueJS");
+      console.log(SamaDengan);
+      break;
+    case 1:
+      console.log(i + " - I love programming");
+      break;
+    case 2:
+      console.log(i + " - I love Javascript");
+      break;
+    default:
+      console.log("Error");
+  }
+  SamaDengan += "=";
+  i++;
 }
