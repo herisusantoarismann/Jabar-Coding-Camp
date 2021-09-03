@@ -42,3 +42,16 @@ function hitung_huruf_vokal(kalimat) {
 }
 
 console.log(hitung_1, hitung_2);
+
+// Soal Nomor 4
+
+// Jawbaan Nomor 4
+function hitung(angka) {
+  return angka * 2 - 2;
+}
+
+console.log(hitung(0)); // -2
+console.log(hitung(1)); // 0
+console.log(hitung(2)); // 2
+console.log(hitung(3)); // 4
+console.log(hitung(5)); // 8
