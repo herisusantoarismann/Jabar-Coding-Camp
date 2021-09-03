@@ -32,8 +32,13 @@ function introduce(data = data) {
 console.log(introduce(data));
 
 // Soal Nomor 3
+var hitung_1 = hitung_huruf_vokal("Muhammad");
+var hitung_2 = hitung_huruf_vokal("Iqbal");
 
 // Jawaban Nomor 3
-function hitung_huruf_vokal() {
-  return /^[aeiou]$/i.test(s);
+function hitung_huruf_vokal(kalimat) {
+  const hasil = kalimat.match(/[aeiou]/gi);
+  return hasil === null ? 0 : hasil.length;
 }
+
+console.log(hitung_1, hitung_2);
