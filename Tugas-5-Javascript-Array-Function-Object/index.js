@@ -6,3 +6,27 @@ daftarHewan = daftarHewan.sort();
 for (let i = 0; i < daftarHewan.length; i++) {
   console.log(daftarHewan[i]);
 }
+
+// Soal Nomor 2
+var data = {
+  name: "John",
+  age: 30,
+  address: "Jalan Pelesiran",
+  hobby: "Gaming",
+};
+
+// Jawaban Nomor 2
+function introduce(data = data) {
+  return (
+    "Nama saya " +
+    data.name +
+    ", umur saya " +
+    data.age +
+    " tahun, alamat saya di " +
+    data.address +
+    ", dan saya punya hobby yaitu " +
+    data.hobby +
+    "!"
+  );
+}
+console.log(introduce(data));
