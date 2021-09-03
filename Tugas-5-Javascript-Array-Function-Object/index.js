@@ -3,9 +3,9 @@ var daftarHewan = ["2. Komodo", "5. Buaya", "3. Cicak", "4. Ular", "1. Tokek"];
 
 // Jawaban Nomor 1
 daftarHewan = daftarHewan.sort();
-daftarHewan.map((item) => {
-  console.log(item);
-});
+for (let i = 0; i < daftarHewan.length; i++) {
+  console.log(daftarHewan[i]);
+}
 
 // Soal Nomor 2
 var data = {
