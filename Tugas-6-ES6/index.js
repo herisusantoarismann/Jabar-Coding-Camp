@@ -47,3 +47,13 @@ const newObject = {
 // Jawaban Nomor 3
 const { firstName, lastName, address, hobby } = newObject;
 console.log(firstName, lastName, address, hobby);
+
+// Soal Nomor 4
+const west = ["Will", "Chris", "Sam", "Holly"];
+const east = ["Gill", "Brian", "Noel", "Maggie"];
+// const combined = west.concat(east);
+// console.log(combined);
+
+// Jawaban Nomor 4
+const combined = [...west, ...east];
+console.log(combined);
