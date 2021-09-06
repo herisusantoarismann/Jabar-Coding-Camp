@@ -57,3 +57,17 @@ const east = ["Gill", "Brian", "Noel", "Maggie"];
 // Jawaban Nomor 4
 const combined = [...west, ...east];
 console.log(combined);
+
+// Soal Nomor 5
+const planet = "earth";
+const view = "glass";
+// var before =
+//   "Lorem " +
+//   view +
+//   "dolor sit amet, " +
+//   "consectetur adipiscing elit," +
+//   planet;
+
+// Jawaban Nomor 5
+var before = `Lorem ${view}dolor sit amet, consectetur adipiscing elit,${planet}`;
+console.log(before);
