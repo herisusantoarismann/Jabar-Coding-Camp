@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quiz 2</title>
+  </head>
+  <body>
+    <div id="app">
+      <div class="input">
+        <input type="text" v-model="user" />
+        <button @click="updateUser()" v-if="index != null">Update</button>
+        <button @click="addUser()" v-else>Add</button>
+      </div>
+      <ul>
+        <li v-for="user, idx in dataList" :key="idx" style="margin-top: 10px">
+          {{user.name}} <button @click="editUser(idx)">Edit</button>
+          <button @click="deleteUser(idx)">Delete</button>
+        </li>
+      </ul>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script>
+      var vm = new Vue({
+        el: "#app",
+        data: {
+          users: [
+            {
+              name: "Muhammad Iqbal Mubarok",
+            },
+            {
+              name: "Ruby Purwanti",
+            },
+            {
+              name: "Faqih Muhammad",
+            },
+          ],
+          index: null,
+          user: "",
+        },
+        computed: {
+          dataList() {
+            return this.users;
+          },
+        },
+        methods: {
+          addUser() {
+            this.users.push({
+              name: this.user,
+            });
+            this.resetState();
+          },
+          editUser(idx) {
+            this.user = this.users[idx].name;
+            this.isUpdate = true;
+            this.index = idx;
+          },
+          updateUser() {
+            this.users[this.index].name = this.user;
+            this.resetState();
+          },
+          deleteUser(idx) {
+            if (confirm("Anda yakin?")) {
+              this.users.splice(idx, 1);
+            } else {
+              return;
+            }
+          },
+          resetState() {
+            this.index = null;
+            this.user = "";
+          },
+        },
+      });
+    </script>
+  </body>
+</html>
