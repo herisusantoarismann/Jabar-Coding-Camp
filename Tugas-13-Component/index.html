@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tugas 12 - Ajax</title>
+    <style>
+      h1 {
+        text-align: center;
+      }
+      .card {
+        margin: auto;
+        display: flex;
+        flex-direction: column;
+        max-width: 300px;
+        padding: 10px 20px;
+        background: rgb(206, 200, 200);
+      }
+      label {
+        margin-top: 5px;
+      }
+      table {
+        margin: 10px auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <div class="">
+        <h1>Tugas 13 - Components</h1>
+        <form v-on:submit.prevent="postMember">
+          <div class="card">
+            <p v-for="error in errors">{{error}}</p>
+            <label for="">Nama</label>
+            <input
+              type="text"
+              :disabled="isUpload"
+              ref="newMember.name"
+              v-model="newMember.name"
+              name="newMember.name"
+            />
+            <label for="">Address</label>
+            <input
+              type="text"
+              :disabled="isUpload"
+              ref="newMember.address"
+              v-model="newMember.address"
+              name="newMember.address"
+            />
+            <label for="">No HP</label>
+            <input
+              type="text"
+              :disabled="isUpload"
+              ref="newMember.no_hp"
+              v-model="newMember.no_hp"
+              name="newMember.no_hp"
+            />
+            <!-- Check if status Update -->
+            <div v-if="isUpdate">
+              <input type="submit" value="Update" />
+              <input type="reset" value="Cancel" @click="resetFormData" />
+            </div>
+            <!-- Check if status Upload -->
+            <div v-else-if="isUpload">
+              <input type="file" name="photo" ref="photo" />
+              <br />
+              <input type="submit" value="Upload" />
+            </div>
+            <div v-else>
+              <input type="submit" value="Submit" />
+            </div>
+          </div>
+        </form>
+      </div>
+      <table-component>
+        <members-component
+          v-for="item in blogs"
+          :member="item"
+          @member="newMember = $event"
+          @update="isUpdate = $event"
+          @upload="isUpload = $event"
+          :key="item.id"
+        ></members-component>
+      </table-component>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.4/axios.js"></script>
+    <script type="module">
+      import { MembersComponent } from "./MembersComponent.js";
+
+      var TableComponent = {
+        template: `
+            <table border="1">
+                <slot></slot>
+            </table>
+        `,
+        methods: {
+          deleteMember: function (idx) {
+            const config = {
+              method: "post",
+              url: `http://demo-api-vue.sanbercloud.com/api/member/${idx}?_method=DELETE`,
+            };
+            axios(config)
+              .then((response) => {
+                alert(response.data.message);
+                this.$parent.getMembers();
+              })
+              .catch(function (error) {
+                console.log(error);
+              });
+          },
+        },
+      };
+
+      var vm = new Vue({
+        el: "#app",
+        components: {
+          "members-component": MembersComponent,
+          "table-component": TableComponent,
+        },
+        data: {
+          blogs: "",
+          errors: "",
+          newMember: {
+            id: "",
+            name: "",
+            address: "",
+            no_hp: "",
+            photo_profile: "",
+          },
+          isUpdate: false,
+          isUpload: false,
+        },
+        methods: {
+          getMembers: function () {
+            const config = {
+              method: "get",
+              url: "http://demo-api-vue.sanbercloud.com/api/member",
+            };
+            axios(config)
+              .then((response) => {
+                this.blogs = response.data.members;
+              })
+              .catch(function (error) {
+                console.log(error);
+              });
+          },
+          validation() {
+            this.errors = [];
+            if (this.newMember.name.length <= 0) {
+              this.errors.push("Nama harus diisi");
+              this.$refs.name.focus();
+            }
+            if (this.newMember.address.length <= 0) {
+              this.errors.push("Alamat harus diisi");
+              this.$refs.address.focus();
+            }
+            if (this.newMember.no_hp.length <= 0) {
+              this.errors.push("Nomor HP harus diisi");
+              this.$refs.no_hp.focus();
+            }
+            // Check phone number with regex
+            const pattern = /^\d+$/;
+            if (!pattern.test(this.newMember.no_hp)) {
+              this.errors.push("Isi Nomor HP dengan benar");
+              this.$refs.no_hp.focus();
+            }
+          },
+          postMember: function () {
+            this.validation();
+            let config;
+            let formData = new FormData();
+            formData.append("name", this.newMember.name);
+            formData.append("address", this.newMember.address);
+            formData.append("no_hp", this.newMember.no_hp);
+            if (this.errors.length === 0) {
+              // Check if submit is Update
+              if (this.isUpdate) {
+                config = {
+                  method: "post",
+                  url: `http://demo-api-vue.sanbercloud.com/api/member/${this.newMember.id}?_method=PUT`,
+                  data: formData,
+                };
+              }
+              // Check if submit is Upload
+              else if (this.isUpload) {
+                let formData = new FormData();
+                formData.append("photo_profile", this.$refs.photo.files[0]);
+                http: config = {
+                  method: "post",
+                  url: `http://demo-api-vue.sanbercloud.com/api/member/${this.newMember.id}/upload-photo-profile`,
+                  data: formData,
+                };
+              } else {
+                config = {
+                  method: "post",
+                  url: "http://demo-api-vue.sanbercloud.com/api/member",
+                  data: formData,
+                };
+              }
+              axios(config)
+                .then((response) => {
+                  this.getMembers();
+                  alert(response.data.message);
+                })
+                .catch(function (error) {
+                  console.log(error);
+                });
+              this.resetFormData();
+            }
+          },
+          resetFormData() {
+            this.NewMember = "";
+            this.isUpdate = false;
+            this.isUpload = false;
+          },
+          getMember: function (data) {
+            this.id = data.id;
+            this.name = data.name;
+            this.address = data.address;
+            this.no_hp = data.no_hp;
+          },
+          editMember: function (data) {
+            this.isUpload = false;
+            this.getMember(data);
+            this.isUpdate = true;
+          },
+          uploadPhoto: function (data) {
+            this.isUpdate = false;
+            this.getMember(data);
+            this.isUpload = true;
+          },
+          test: function () {
+            alert("YE");
+          },
+        },
+        created() {
+          this.getMembers();
+        },
+      });
+    </script>
+  </body>
+</html>
