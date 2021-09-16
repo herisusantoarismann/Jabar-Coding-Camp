@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tugas 14 - VueRouter</title>
+  </head>
+  <body>
+    <div id="app">
+      <h1>Belajar Vue Router</h1>
+      <router-link to="/">Home</router-link>
+      <router-link to="/profile">Profile</router-link>
+      <router-link to="/admin">Admin</router-link>
+      <hr />
+      <router-view></router-view>
+    </div>
+
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+    <script type="module">
+      import { Profile } from "./Profile.js";
+      import { Admin } from "./Admin.js";
+      import { Home } from "./Home.js";
+
+      const routes = [
+        {
+          path: "/",
+          component: Home,
+          alias: "/home",
+          name: "home",
+          meta: { login: false },
+        },
+        { path: "*", redirect: "/" },
+        {
+          path: "/profile",
+          component: Profile,
+          meta: { login: true, role: "user" },
+          name: "profile",
+        },
+        {
+          path: "/admin",
+          component: Admin,
+          meta: { login: true, role: "user" },
+          name: "admin",
+        },
+      ];
+      const router = new VueRouter({
+        routes,
+      });
+      router.beforeEach((to, from, next) => {
+        if (to.name === "home") {
+          next();
+        } else {
+          //   Cek jika login atau belum
+          if (to.matched.some((record) => record.meta.login)) {
+            // Cek jika ingin ke admin
+            if (to.name === "admin") {
+              // Cek role
+              if (to.matched.some((record) => record.meta.role === "admin")) {
+                next();
+              } else {
+                alert("Bukan admin");
+                next(false);
+              }
+            }
+            // Jika ingin ke profile
+            else if (to.name === "profile") {
+              if (to.matched.some((record) => record.meta.role === "user")) {
+                next();
+              }
+              //   Cek role
+              else {
+                alert("Bukan User");
+                next(false);
+              }
+            }
+            // Jika route salah
+            else {
+              alert("Route salah");
+              next(false);
+            }
+          }
+          //   Jika belum login
+          else {
+            alert("Belum Login");
+            next(false);
+          }
+        }
+      });
+      var vm = new Vue({
+        el: "#app",
+        router,
+      });
+    </script>
+  </body>
+</html>
